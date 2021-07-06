@@ -37,4 +37,19 @@ app.post("/account", (req, res) => {
   return res.status(201).send();
 });
 
+app.get("/statement/:cpf", (req, res) => {
+  const { cpf } = req.params;
+
+  const customer = customers.find(customer => customer.cpf === cpf)
+
+  if(!customer) {
+    return res.json({
+      error: 'Not found a user with this CPF'
+    })
+  }
+
+  return res.json(customer.statement)
+
+})
+
 app.listen(3333)
