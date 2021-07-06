@@ -18,6 +18,14 @@ const customers = [];
 app.post("/account", (req, res) => {
   const { name, cpf  } = req.body;
 
+  const alreadyExistsCPFInUse = customers.some(customer => customer.cpf === cpf)
+
+  if (alreadyExistsCPFInUse) {
+    return res.status(400).json({
+     error: 'Already exists a user with this CPF' 
+    })
+  }
+
   customers.push({
     name,
     cpf,
