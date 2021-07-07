@@ -123,4 +123,10 @@ app.put("/account", verifyExistsCustomerCPF, (req, res) => {
   return res.status(201).send();
 })
 
+app.get("/account", verifyExistsCustomerCPF, (req, res) => {
+  const { customer } = req;
+
+  return res.json(customer)
+})
+
 app.listen(3333)
