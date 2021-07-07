@@ -129,4 +129,12 @@ app.get("/account", verifyExistsCustomerCPF, (req, res) => {
   return res.json(customer)
 })
 
+app.delete("/account", verifyExistsCustomerCPF, (req, res) => {
+  const { customer } = req;
+
+  customers.splice(customer, 1);
+
+  return res.send();
+})
+
 app.listen(3333)
