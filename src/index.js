@@ -10,7 +10,7 @@ const customers = [];
 
 // Middlewares
 function verifyExistsCustomerCPF(req, res, next) {
-  const { cpf } = req.body;
+  const { cpf } = req.headers;
 
   const customer = customers.find(customer => customer.cpf === cpf)
 
